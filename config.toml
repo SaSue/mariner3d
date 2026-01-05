@@ -24,7 +24,7 @@ display_name = "Elegoo Mars 2"
 # is generally only helpful if you aren't running mariner on a Raspberry Pi
 # or if you are running with a printer that uses a different baud rate.
 # serial_port = "/dev/serial0"
-serial_port = "/dev/serial0"
+serial_port = "/dev/ttyS0"
 baudrate = 115200
 
 [http]
