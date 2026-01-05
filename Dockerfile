@@ -1,7 +1,6 @@
-FROM --platform=linux/arm/v7 debian:bullseye-slim
+FROM debian:bullseye-slim
 
 # Minimal runtime deps 
-RUN apt-get update && apt-get upgrade -y
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates wget python3 \
     libxml2 libxslt1.1 \
