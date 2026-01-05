@@ -1,8 +1,12 @@
+version: "3.8"
+
 services:
   mariner:
+    image: registry.intranet.suechting.com/mariner3d:latest
     container_name: mariner
-    command: ["/usr/bin/mariner"]
     restart: unless-stopped
+
+    command: ["/usr/bin/mariner"]
 
     ports:
       - "5000:5000"
@@ -11,5 +15,5 @@ services:
       - "/dev/serial0:/dev/serial0"
 
     volumes:
-      - "/mnt/usb:/mnt/usb_share"
-      - "./config.toml:/app/config.toml:ro"
+      - /mnt/usb:/mnt/usb_share
+      - ./config.toml:/etc/mariner/config.toml:ro
