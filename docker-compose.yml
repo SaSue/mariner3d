@@ -4,7 +4,7 @@ services:
   mariner:
     platform: linux/arm/v7
     build: .
-    container_name: test
+    container_name: mariner
     restart: unless-stopped
 
     command: ["/usr/bin/mariner"]
