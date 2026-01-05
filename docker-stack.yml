@@ -16,7 +16,7 @@ services:
         read_only: true
       # Swarm-Workaround statt devices:
       - type: bind
-        source: /dev/ttyS0
+        source: /dev/serial0
         target: /dev/ttyS0
 
     networks:
