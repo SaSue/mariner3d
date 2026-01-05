@@ -1,0 +1,36 @@
+services:
+  mariner:
+    image: registry.intranet.suechting.com/mariner3d:latest
+    command: ["/usr/bin/mariner"]
+
+    ports:
+      - "5000:5000"
+
+    volumes:
+      - type: bind
+        source: /mnt/usb
+        target: /mnt/usb_share
+      - type: bind
+        source: /opt/mariner3d/config.toml
+        target: /etc/mariner/config.toml
+        read_only: true
+      # Swarm-Workaround statt devices:
+      - type: bind
+        source: /dev/ttyS0
+        target: /dev/ttyS0
+
+    networks:
+      - internal-net
+
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: any
+      placement:
+        constraints:
+          - node.hostname == raspi3d
+          # alternativ: node.labels.role == mariner
+
+networks:
+  internal-net:
+    external: true
