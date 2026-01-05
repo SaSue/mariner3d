@@ -17,3 +17,10 @@ services:
     volumes:
       - /mnt/usb:/mnt/usb_share
       - ./config.toml:/etc/mariner/config.toml:ro
+
+    networks:
+      - internal-net
+
+networks:
+  internal-net:
+    external: true
