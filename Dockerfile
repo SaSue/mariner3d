@@ -1,9 +1,7 @@
-FROM debian:bullseye-slim
+FROM --platform=linux/arm/v7 debian:bullseye-slim
 
-ENV NODE_OPTIONS=--dns-result-order=ipv4first \
-    PYTHONUNBUFFERED=1
-
-# Minimal runtime deps (no -dev!)
+# Minimal runtime deps 
+RUN apt-get update && apt-get upgrade -y
 RUN apt-get update && apt-get install -y --no-install-recommends \
     ca-certificates wget python3 \
     libxml2 libxslt1.1 \
